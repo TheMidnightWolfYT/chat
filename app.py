@@ -10,18 +10,18 @@ app = Flask(__name__)
 app.config["TEMPLATES_AUTO_RELOAD"] = True
 
 # Configure CS50 Library to use SQLite database
-db = SQL("sqlite:///messages.db")
+db = SQL("sqlite:///system.db")
 
 @app.route("/", methods=["GET", "POST"])
 def index():
     if request.method == "POST":
 
         message = request.form.get("message")
-        db.execute("INSERT INTO texts (message) VALUES(?)", message)
+        db.execute("INSERT INTO messages (message_text) VALUES(?)", message)
 
         return redirect("/")
 
     else:
 
-        notes = db.execute("SELECT * FROM texts")
+        notes = db.execute("SELECT * FROM messages")
         return render_template("index.html", notes=notes)

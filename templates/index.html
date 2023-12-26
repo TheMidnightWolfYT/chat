@@ -34,7 +34,7 @@
                         <!-- Loop through the database entries to display them in this table-->
                         {% for note in notes %}
                             <tr>
-                                <td>{{ note.name }}</td>
+                                <td>{{ note.message_text }}</td>
                             </tr>
                         {% endfor%}
                     </tbody>
